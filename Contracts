@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+// Importa la librería estándar de OpenZeppelin
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+/// @title Prana Token ($Prana)
+/// @notice ERC20 simple para recompensar hábitos de respiración consciente
+/// @dev Supply inicial fijo, mint solo al deploy
+contract PranaToken is ERC20, Ownable {
+    constructor(uint256 initialSupply) ERC20("Prana Token", "PRANA") Ownable(msg.sender) {
+        // Mint inicial al creador del contrato
+        _mint(msg.sender, initialSupply * 10 ** decimals());
+    }
+}
